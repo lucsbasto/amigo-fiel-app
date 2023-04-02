@@ -4,14 +4,12 @@ import 'package:hexcolor/hexcolor.dart';
 class MyTextField extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final controller;
-  final String hintText;
   final String labelText;
   final bool obscureText;
 
   const MyTextField({
     super.key,
     required this.controller,
-    required this.hintText,
     required this.labelText,
     required this.obscureText,
     });
@@ -32,7 +30,6 @@ class MyTextField extends StatelessWidget {
                   borderSide: BorderSide(color: HexColor("#CAC4D0"))
                 ),
                 filled: true,
-                hintText: hintText,
                 hintStyle: TextStyle(color: Colors.grey[500]),
                 labelText: labelText,
                 labelStyle: TextStyle(color: Colors.grey[500]),

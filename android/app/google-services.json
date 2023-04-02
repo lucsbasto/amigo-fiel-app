@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "400383641440",
+    "project_id": "amigo-fiel-283b5",
+    "storage_bucket": "amigo-fiel-283b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400383641440:android:d019ba445c29a39b844005",
+        "android_client_info": {
+          "package_name": "com.example.amigo_fiel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400383641440-91edqmupgq7sv2qffm7pqefq043js2bo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5iAn7OHcKVGLut7i1bUNhGdObrPh8I9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400383641440-91edqmupgq7sv2qffm7pqefq043js2bo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
