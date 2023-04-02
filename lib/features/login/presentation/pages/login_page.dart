@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(leading: const BackButton()),
+      appBar: AppBar(leading: const BackButton(color: Colors.black), backgroundColor: Colors.grey[300]),
       body: SafeArea(
        child:  Column(
         mainAxisAlignment: MainAxisAlignment.center,
