@@ -1,27 +1,37 @@
+import 'package:amigo_fiel/services/controllers/feedspot-controller.dart';
+import 'package:amigo_fiel/services/controllers/markers-controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapsWidget extends StatefulWidget {
-  MapsWidget({
+class MapWidget extends StatelessWidget {
+  final MarkerController markerController = Get.put(MarkerController());
+  final FeedspotController feedspotController = Get.put(FeedspotController());
+
+  MapWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MapsWidget> createState() => _MapsWidgetState();
-}
-
-class _MapsWidgetState extends State<MapsWidget> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GoogleMap(
-      initialCameraPosition: CameraPosition(
-        target: const LatLng(-10.2077868, -48.346478),
-        zoom: 15,
+      body: GetX<MarkerController>(
+        builder: (controller) {
+          return GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: controller.currentPosition.value,
+              zoom: 15,
+            ),
+            onCameraMove: (position) {
+              controller.updatePosition(position.target);
+            },
+            markers: Set<Marker>.of(controller.markers),
+            onTap: (position) {
+              feedspotController.hidePanel();
+            },
+          );
+        },
       ),
-      onCameraMove: (position) {},
-      markers: Set<Marker>.of([]),
-      onTap: (position) {},
-    ));
+    );
   }
 }

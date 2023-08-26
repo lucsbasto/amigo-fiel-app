@@ -12,7 +12,7 @@ class FeedSpot {
   double longitude;
   String landmark;
   Address? address;
-  String fullAddress;
+  String? fullAddress;
   List<User>? likedBy;
   List<Image>? images;
   Company? sponsoredBy;
@@ -28,7 +28,7 @@ class FeedSpot {
     this.images,
     this.sponsoredBy,
     this.address,
-    required this.fullAddress,
+    this.fullAddress,
   });
 
   // LatLng toLatLng() {
