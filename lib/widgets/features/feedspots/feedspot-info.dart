@@ -1,7 +1,9 @@
 import 'package:amigo_fiel/services/controllers/feedspot-controller.dart';
+import 'package:amigo_fiel/services/controllers/panel-controller.dart';
 import 'package:amigo_fiel/services/controllers/user-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class FeedSpotPanel extends StatelessWidget {
   const FeedSpotPanel({
@@ -13,15 +15,15 @@ class FeedSpotPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userController = Get.find<UserController>();
-
+    final userController = Get.put(UserController());
+    final panelController = Get.put(PanelControllerMixin());
     return GetX<FeedspotController>(
       builder: (controller) {
         final feedspot = controller.feedspot;
         final user = userController.loggedUser;
 
         return Visibility(
-          visible: controller.isPanelVisible.value,
+          visible: panelController.isVisible,
           child: Stack(
             children: [
               Padding(

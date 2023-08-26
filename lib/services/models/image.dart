@@ -11,4 +11,8 @@ class Image {
   factory Image.fromJson(Map<String, dynamic> json) {
     return Image(id: json['id'], imageUrl: json['imageUrl']);
   }
+
+  static List<Image> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => Image.fromJson(json)).toList();
+  }
 }

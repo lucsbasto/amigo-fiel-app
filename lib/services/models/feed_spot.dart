@@ -1,3 +1,5 @@
+import 'package:amigo_fiel/utils/format-cep.dart';
+
 import 'address.dart';
 import 'user.dart';
 import 'company.dart';
@@ -45,7 +47,7 @@ class FeedSpot {
       longitude: json['longitude'],
       landmark: json['landmark'],
       likedBy: [],
-      images: [],
+      images: Image.fromJsonList(json['images']),
       sponsoredBy: null,
       address: Address.fromJson(json['address']),
       fullAddress: getFullAddress(json['address']),
@@ -54,7 +56,8 @@ class FeedSpot {
 
   static String getFullAddress(Map<String, dynamic> json) {
     if (json['id'] != null) {
-      return "${json['street']} ${json['number']} \n${json['cep']} ${json['block']}";
+      final cep = formatCEP(json['cep']);
+      return "${json['street']} ${json['number']} \n${cep} ${json['block']}";
     }
     return '';
   }

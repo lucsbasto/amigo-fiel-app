@@ -1,5 +1,6 @@
 import 'package:amigo_fiel/services/controllers/feedspot-controller.dart';
 import 'package:amigo_fiel/services/controllers/markers-controller.dart';
+import 'package:amigo_fiel/services/controllers/panel-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,7 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class MapWidget extends StatelessWidget {
   final MarkerController markerController = Get.put(MarkerController());
   final FeedspotController feedspotController = Get.put(FeedspotController());
-
+  final PanelControllerMixin panelController = Get.put(PanelControllerMixin());
   MapWidget({
     Key? key,
   }) : super(key: key);
@@ -27,7 +28,7 @@ class MapWidget extends StatelessWidget {
             },
             markers: Set<Marker>.of(controller.markers),
             onTap: (position) {
-              feedspotController.hidePanel();
+              panelController.closePanel();
             },
           );
         },

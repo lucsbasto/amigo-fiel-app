@@ -13,3 +13,5 @@ const customOnBoardingPage2Color = Color(0xFFFDFCDF);
 const customOnBoardingPage3Color = Color(0xFFFFDCDB);
 
 const customDefaultDarkColor = Color(0xFF232323);
+
+const customInvisibleColor = Colors.transparent;

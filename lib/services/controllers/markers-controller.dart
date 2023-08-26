@@ -1,4 +1,5 @@
 import 'package:amigo_fiel/services/controllers/feedspot-controller.dart';
+import 'package:amigo_fiel/services/controllers/panel-controller.dart';
 import 'package:amigo_fiel/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,26 +8,10 @@ import 'package:get/get.dart';
 class MarkerController extends GetxController {
   final Rx<LatLng> currentPosition = LatLng(-10.2077868, -48.346478).obs;
   final FeedspotController _feedspotController = Get.put(FeedspotController());
-
+  final PanelControllerMixin panelController = Get.put(PanelControllerMixin());
   BitmapDescriptor markerIconFull = BitmapDescriptor.defaultMarker;
   BitmapDescriptor markerIconEmpty = BitmapDescriptor.defaultMarker;
   final RxList<Marker> markers = <Marker>[].obs;
-
-  void hidePanel() {
-    _feedspotController.hidePanel();
-  }
-
-  void showPanel() {
-    _feedspotController.showPanel();
-  }
-
-  void openPanel() {
-    _feedspotController.openPanel();
-  }
-
-  void closePanel() {
-    _feedspotController.closePanel();
-  }
 
   void updatePosition(LatLng newPosition) {
     currentPosition.value = newPosition;
@@ -66,6 +51,7 @@ class MarkerController extends GetxController {
           icon: feedspot.isFull ? markerIconFull : markerIconEmpty,
           onTap: () {
             _feedspotController.setFeedspot(feedspot);
+            panelController.openPanel();
           },
         );
         newMarkers.add(marker);

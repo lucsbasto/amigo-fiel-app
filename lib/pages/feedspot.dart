@@ -1,8 +1,8 @@
+import 'package:amigo_fiel/services/controllers/panel-controller.dart';
 import 'package:amigo_fiel/widgets/features/feedspots/feedspot-info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:amigo_fiel/services/controllers/feedspot-controller.dart';
 import 'package:amigo_fiel/widgets/features/maps.dart';
 
 class FeedSpotInfo extends StatelessWidget {
@@ -17,10 +17,11 @@ class FeedSpotInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<FeedspotController>(
-      builder: (feedspotController) {
+    return GetBuilder<PanelControllerMixin>(
+      builder: (panelController) {
         return SlidingUpPanel(
-          controller: feedspotController.panelController,
+          minHeight: 0,
+          controller: panelController.controller,
           backdropEnabled: true,
           color: defaultBackgroundColor,
           boxShadow: const [BoxShadow(blurRadius: 8, color: Color.fromRGBO(0, 0, 0, 0.75))],

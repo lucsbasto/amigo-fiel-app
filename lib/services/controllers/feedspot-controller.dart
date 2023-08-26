@@ -2,35 +2,11 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:amigo_fiel/services/models/feed_spot.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class FeedspotController extends GetxController {
   final RxList<FeedSpot> feedspots = <FeedSpot>[].obs;
   final Rx<FeedSpot?> _feedSpot = Rx<FeedSpot?>(null);
   FeedSpot? get feedspot => _feedSpot.value;
-
-  final RxBool isPanelVisible = false.obs;
-  final PanelController panelController = PanelController();
-
-  void showPanel() {
-    isPanelVisible.value = true;
-    panelController.show();
-  }
-
-  void hidePanel() {
-    isPanelVisible.value = false;
-    panelController.hide();
-  }
-
-  void openPanel() {
-    isPanelVisible.value = true;
-    panelController.open();
-  }
-
-  void closePanel() {
-    isPanelVisible.value = false;
-    panelController.close();
-  }
 
   @override
   void onInit() {
@@ -48,8 +24,7 @@ class FeedspotController extends GetxController {
         final feedspot = FeedSpot.fromJson(json);
         newFeedspots.add(feedspot);
       }
-      feedspots.assignAll(newFeedspots); // Atualiza a lista de feedspots
-      print(feedspots);
+      feedspots.assignAll(newFeedspots);
     } catch (error) {
       print(error);
     } finally {
@@ -59,8 +34,5 @@ class FeedspotController extends GetxController {
 
   setFeedspot(FeedSpot feedspot) {
     _feedSpot.value = feedspot;
-
-    showPanel();
-    openPanel();
   }
 }
